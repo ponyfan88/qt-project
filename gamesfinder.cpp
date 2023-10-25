@@ -52,7 +52,13 @@ void gamesFinder::findGames(const std::string directoryPath) {
 
                 myGame.name = myName;
                 myGame.id = std::stoi(myId);
-                myGame.path = directoryPath + myPath + "/";
+                myGame.path = directoryPath + "common/" + myPath + "/";
+
+                if (std::filesystem::exists(myGame.path + "toolmanifest.vdf")) {
+                    myGame.type = Game::TYPE::TOOL;
+                } else {
+                    myGame.type = Game::TYPE::GAME;
+                }
 
                 games.push_back(myGame);
 

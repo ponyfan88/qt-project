@@ -6,6 +6,20 @@
 class Game
 {
 public:
+    enum class PLATFORM {
+        LINUX,
+        WINDOWS,
+        WINDOWS64,
+        UNKNOWN
+    };
+
+    enum class TYPE {
+        GAME,
+        TOOL,
+        NODRM_PROTON,
+        UNKNOWN
+    };
+
     Game();
 
     Game(int id, std::string name, std::string path);
@@ -13,6 +27,12 @@ public:
     int id;
     std::string name;
     std::string path;
+
+    PLATFORM platform = PLATFORM::UNKNOWN;
+    TYPE type = TYPE::UNKNOWN;
+
+    std::string apiPath;
+
 };
 
 #endif // GAME_H

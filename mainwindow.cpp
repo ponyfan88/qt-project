@@ -1,5 +1,8 @@
+#include <unistd.h>
+
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+#include "crack.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -62,6 +65,14 @@ MainWindow::MainWindow(QWidget *parent)
         ui->gameId->setText(QString::fromStdString(std::to_string(myGame.id))); // set the games id
 
         ui->crackedStatus->setStyleSheet("QLabel { color : red; }"); // BAD color
+
+        crack myCrack = crack(myGame);
+
+    });
+
+    connect(ui->openGamePathButton,&QPushButton::clicked, this, [this]()  {
+        //execl("");
+        // nothing yes, eventually use xdg-open to do that
     });
 }
 
