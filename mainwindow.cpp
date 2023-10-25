@@ -87,9 +87,7 @@ MainWindow::MainWindow(QWidget *parent)
     });
 
     connect(ui->openGamePathButton,&QPushButton::clicked, this, [this, selectedRow]() mutable {
-        Game myGame = myGamesFinder.games[ui->listWidget->currentRow()];
-        std::cout << myGame.path << std::endl;
-        std::string command = "xdg-open \"" + myGame.path + "\"";
+        std::string command = "xdg-open \"" + myGamesFinder.games[ui->listWidget->currentRow()].path + "\"";
         std::system(command.c_str());
     });
 }
