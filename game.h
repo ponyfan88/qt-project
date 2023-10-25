@@ -16,7 +16,7 @@ public:
     enum class TYPE {
         GAME,
         TOOL,
-        NODRM_PROTON,
+        NODRM_MISC,
         UNKNOWN
     };
 
