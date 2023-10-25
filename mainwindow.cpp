@@ -1,4 +1,5 @@
 #include <unistd.h>
+#include <iostream>
 
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
@@ -40,6 +41,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->gamePath->setText("");
     ui->openGamePathButton->setVisible(false);
     ui->gameId->setText("");
+    ui->apiStatus->setText("");
 
     for (int i = 0; i < myGamesFinder.games.size(); i++) {
         QString gameName = QString::fromStdString(myGamesFinder.games[i].name);
@@ -68,11 +70,27 @@ MainWindow::MainWindow(QWidget *parent)
 
         crack myCrack = crack(myGame);
 
+        switch (myGame.platform) {
+            case Game::PLATFORM::WINDOWS64:
+                ui->apiStatus->setText("WINDOWS64 (steam_api64.dll)");
+                break;
+            case Game::PLATFORM::WINDOWS:
+                ui->apiStatus->setText("WINDOWS (steam_api.dll)");
+                break;
+            case Game::PLATFORM::LINUX:
+                ui->apiStatus->setText("LINUX (libsteam_api.so)");
+                break;
+            default:
+                ui->apiStatus->setText("UNKNOWN");
+                break;
+        }
     });
 
-    connect(ui->openGamePathButton,&QPushButton::clicked, this, [this]()  {
-        //execl("");
-        // nothing yes, eventually use xdg-open to do that
+    connect(ui->openGamePathButton,&QPushButton::clicked, this, [this, selectedRow]() mutable {
+        Game myGame = myGamesFinder.games[ui->listWidget->currentRow()];
+        std::cout << myGame.path << std::endl;
+        std::string command = "xdg-open \"" + myGame.path + "\"";
+        std::system(command.c_str());
     });
 }
 

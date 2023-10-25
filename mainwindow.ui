@@ -128,6 +128,32 @@
      <string>false</string>
     </property>
    </widget>
+   <widget class="QLabel" name="apiLabel">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>140</y>
+      <width>51</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>api type:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="apiStatus">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>140</y>
+      <width>161</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>unkown</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
