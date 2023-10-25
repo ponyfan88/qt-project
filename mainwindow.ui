@@ -154,6 +154,19 @@
      <string>unkown</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="ownButton">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>160</y>
+      <width>41</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>own!</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
